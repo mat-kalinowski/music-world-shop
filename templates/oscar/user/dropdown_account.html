@@ -1,0 +1,23 @@
+<ul class="basket-mini-item list-unstyled">
+    {% if user.is_authenticated %}
+        <li><p class="basketHeader">Your account</p></li>
+        <li>
+            {% if request.path == "/accounts/profile/" %}
+            <p>hejo</p>
+            {% endif %}
+            <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                <label class="btn btn-outline-primary" for="btnradio1">Radio 1</label>
+                <label class="btn btn-outline-primary" for="btnradio2">Radio 2</label>
+                <label class="btn btn-outline-primary" for="btnradio3">Radio 3</label>
+            </div>
+        </li>
+    http://localhost:8000/accounts/orders/
+    {% else %}
+        <li><p class="basketHeader">Login or register</p>
+            <div class="dropdown-divider"></div>
+            <div class="basket-sub-header">Having an account provides you many options and discounts.</div>
+            <div class="dropdown-divider"></div>
+            <a href="/accounts/login/" type="button" class="btn btn-dark lato-regular400-text">Login/Register form</a>
+        </li>
+    {% endif %}
+</ul>
