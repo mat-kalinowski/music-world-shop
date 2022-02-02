@@ -1,17 +1,24 @@
-<ul class="basket-mini-item list-unstyled">
+{% load custom_tags %}
+
+<ul class="list-unstyled">
     {% if user.is_authenticated %}
-        <li><p class="basketHeader">Your account</p></li>
-        <li>
-            {% if request.path == "/accounts/profile/" %}
-            <p>hejo</p>
-            {% endif %}
-            <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-                <label class="btn btn-outline-primary" for="btnradio1">Radio 1</label>
-                <label class="btn btn-outline-primary" for="btnradio2">Radio 2</label>
-                <label class="btn btn-outline-primary" for="btnradio3">Radio 3</label>
+        <li class="">
+            <a href="/accounts/profile"  class="c-link-no-style c-profile-button {{ request.path | check_active_url:"/accounts/profile/"}}">
+                Profile page
+            </a>
+            <a href="/accounts/orders"  class="c-link-no-style c-profile-button {{ request.path | check_active_url:"/accounts/orders/"}}">
+                Order history
+            </a>
+            <div class="c-profile-button {{ request.path | check_active_url:"accounts/emails/"}}">
+                Newsletter
             </div>
         </li>
-    http://localhost:8000/accounts/orders/
+        <div class="dropdown-divider"></div>
+        <li>
+            <a href="{% url 'customer:logout' %}" class="c-logout-link-no-style c-logout-button">
+                Logout
+            </a>
+        </li>
     {% else %}
         <li><p class="basketHeader">Login or register</p>
             <div class="dropdown-divider"></div>

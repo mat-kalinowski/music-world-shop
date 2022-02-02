@@ -1,0 +1,18 @@
+:root {
+    --header-bg: #2e2e2e;
+    --topnav-bg: #2a2a2a;
+}
+
+:root {
+    --main-font: 'Lato', sans-serif;
+    --secondary-font: 'Playfair Display', serif;
+}
+
+.def-main-font {
+    font-family: var(--main-font);
+    font-weight: 400;
+}
+
+.def-secondary-font {
+    font-family: var(--secondary-font);
+}

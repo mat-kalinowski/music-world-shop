@@ -1,0 +1,54 @@
+{% load currency_filters %}
+{% load category_tags %}
+{% load i18n %}
+
+<nav class="d-flex d-md-none {% block nav_classes %}navbar navbar-expand-lg navbar-dark bg-dark{% endblock %}">
+    {% block navbar_toggler %}
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    {% endblock %}
+
+    {% block navbar_basket %}
+        <a class="btn btn-secondary float-right btn-cart ml-auto d-inline-block d-md-none" href="{% url 'basket:summary' %}">
+            <i class="fas fa-shopping-cart"></i>
+            {% trans "Basket" %}
+            {% if not request.basket.is_empty %}
+                {% if request.basket.is_tax_known %}
+                    {% blocktrans with total=request.basket.total_incl_tax|currency:request.basket.currency %}
+                        Total: {{ total }}
+                    {% endblocktrans %}
+                {% else %}
+                    {% blocktrans with total=request.basket.total_excl_tax|currency:request.basket.currency %}
+                        Total: {{ total }}
+                    {% endblocktrans %}
+                {% endif %}
+            {% endif %}
+        </a>
+    {% endblock %}
+
+    {% block navbar_collapse %}
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            {% block nav %}
+                <ul class="navbar-nav mr-auto">
+                    {% block nav_items %}
+                        {% category_tree depth=1 as tree_categories %}
+                            {% if tree_categories %}
+                                {% for tree_category in tree_categories %}
+                                    <li class="nav-item">
+                                        <a class="dropdown-item" href="{{ tree_category.get_absolute_url }}">{{ tree_category.name }}</a>
+                                    </li>
+                                {% endfor %}
+                            {% endif %}
+                            {% comment %}
+                                <div class="dropdown-divider"></div>
+                                {% block nav_dropdown_extra_items %}
+                                    <a class="dropdown-item" href="{% url 'offer:list' %}">{% trans "Offers" %}</a>
+                                {% endblock %}
+                            {% endcomment %}
+                   {% endblock %}
+               </ul>
+            {% endblock %}
+        </div>
+    {% endblock %}
+</nav>

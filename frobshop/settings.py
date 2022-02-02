@@ -33,6 +33,8 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'custom_filters',
+
     'django.contrib.sites',
     'django.contrib.flatpages',
     'django.contrib.admin',

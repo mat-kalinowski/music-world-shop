@@ -24,13 +24,14 @@
 }
 
 .nav-dropdown-menu {
-  min-width: 200px;
+  min-width: 170px;
   border: 2px solid rgb(32,32,32);
 }
 
 .basketHeader {
   font-family: 'Lato', sans-serif;
   font-size: 16px;
+  width: 170px;
   color: rgb(16, 16, 16);
   font-weight: bolder;
   text-align: center;
@@ -46,4 +47,104 @@
 .lato-regular400-text {
   font-family: 'Lato', sans-serif;
 }
-  
+
+.c-profile-button {
+  text-align: center;
+  font-family: 'Lato', sans-serif;
+  font-size: 15px;
+  position: relative;
+  margin-bottom: 4px;
+  padding: 4px;
+}
+
+.c-profile-button:not(.c-profile-button-active):hover {
+  color:rgb(32,32,32);
+}
+
+.c-profile-button:not(.c-profile-button-active):hover:before {
+  content : "";
+  position: absolute;
+  left    : 0;
+  right: 0;
+  bottom  : 0;
+  margin: auto;
+  height  : 1px;
+  width   : 60%;  /* or 100px */
+  border-bottom:1px solid grey;
+}
+
+
+.c-profile-button-active {
+  position: relative;
+  z-index : 1;
+  margin-bottom: 6px;;
+  font-weight: bolder;
+  color: black;
+}
+
+
+.c-profile-button-active:before {
+  content : "";
+  position: absolute;
+  left    : 0;
+  right: 0;
+  bottom  : 0;
+  margin: auto;
+  height  : 1px;
+  width   : 60%;  /* or 100px */
+  border-bottom:2px solid black;
+}
+
+.c-profile-button-border {
+  border-bottom: 2px solid black;
+  position: absolute;
+  top: 50%;
+  bottom: 0;
+}
+
+.c-link-no-style {
+  display: block;
+  text-decoration: none;
+  color: black;
+}
+
+.c-link-no-style:visited {
+  color: black;
+}
+
+.c-link-no-style:hover {
+  text-decoration: none;
+}
+
+.c-logout-link-no-style {
+  color:rgb(90, 90, 90);
+  display: block;
+  text-decoration: none;
+}
+
+.c-logout-link-no-style:hover {
+  text-decoration: none;
+}
+
+.c-logout-link-no-style:visited {
+  color:rgb(90, 90, 90);
+}
+
+.c-logout-button {
+  text-align: center;
+  font-family: 'Lato', sans-serif;
+  color:rgb(90, 90, 90);
+  font-size: 15px;
+  margin-bottom: 2px;
+  padding: 3px;
+}
+
+.c-logout-button:hover {
+  color:rgb(54, 54, 54);
+}
+
+.c-top-header {
+  background-color: var(--header-bg);
+  border-bottom: 4px solid var(--topnav-bg);
+  margin-bottom: 12px;
+}
