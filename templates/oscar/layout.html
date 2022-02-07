@@ -40,6 +40,8 @@
     {# Main content of page - other layout templates may override this block #}
     {% block content_wrapper %}
         <div class="container page">
+            {% include "oscar/partials/slider.html"%}
+            <div>hey</div>
             <div class="page_inner">
                 {% block breadcrumbs %}{% endblock %}
                 {% block header %}
